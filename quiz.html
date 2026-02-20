@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fun Quiz</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: linear-gradient(to right,#a5f3fc,#fef08a);
+    text-align:center;
+}
+
+h1{
+    background:#16a34a;
+    color:white;
+    padding:20px;
+}
+
+.quiz-box{
+    background:white;
+    width:60%;
+    margin:auto;
+    margin-top:40px;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0px 4px 12px rgba(0,0,0,0.3);
+}
+
+.question{
+    font-size:22px;
+    margin-top:20px;
+    font-weight:bold;
+}
+
+button{
+    display:block;
+    width:60%;
+    margin:10px auto;
+    padding:12px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+#result{
+    font-size:24px;
+    margin-top:20px;
+    font-weight:bold;
+    color:#dc2626;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Kids Fun Quiz 🎮</h1>
+
+<div class="quiz-box">
+
+<div class="question">
+1) Which one gives direct answers?
+</div>
+<button onclick="checkAnswer(1,'wrong')">Google</button>
+<button onclick="checkAnswer(1,'correct')">ChatGPT</button>
+
+<div class="question">
+2) Which one shows websites and links?
+</div>
+<button onclick="checkAnswer(2,'correct')">Google</button>
+<button onclick="checkAnswer(2,'wrong')">ChatGPT</button>
+
+<div class="question">
+3) Which one can chat like a friend?
+</div>
+<button onclick="checkAnswer(3,'wrong')">Google</button>
+<button onclick="checkAnswer(3,'correct')">ChatGPT</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+let score = 0;
+let answered = [false,false,false,false];
+
+function checkAnswer(q, ans){
+    if(answered[q] === true){
+        return;
+    }
+
+    answered[q] = true;
+
+    if(ans === 'correct'){
+        score++;
+        document.getElementById("result").innerHTML = "Correct! 🎉 Score: " + score;
+    } else {
+        document.getElementById("result").innerHTML = "Oops! Try next 😅 Score: " + score;
+    }
+
+    if(answered[1] && answered[2] && answered[3]){
+        document.getElementById("result").innerHTML =
+        "Quiz Finished 🎊 Your Score: " + score + "/3";
+    }
+}
+</script>
+
+</body>
+</html>
